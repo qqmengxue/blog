@@ -8,7 +8,9 @@ podTemplate(label: 'jenkins-slave-pod',  containers: [
 /*
       persistentVolumeClaim(mountPath: '/home/jenkins', claimName: 'jenkins', readOnly: false),
 */
-     hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')
+     hostPathVolume(hostPath: '/root/work/jenkins', mountPath: '/home/jenkins'),
+     hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock'),
+     hostPathVolume(hostPath: '/tmp/', mountPath: '/tmp/'),
   ]) {
 
     node ('jenkins-slave-pod') {
